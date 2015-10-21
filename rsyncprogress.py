@@ -2,6 +2,8 @@
 Progress bar for rsync
 ========================
 
+Shows file progress and total progress as a progress bar.
+
 Usage
 ---------
 Run rsync with -P and pipe into this program. Example::
@@ -78,6 +80,7 @@ for line in read_stdin():
 			first_update = j
 			pbar = progressbar.ProgressBar(widgets=widgets,
 				maxval=ntotal - first_update).start()
+		pbar.maxval = ntotal - first_update
 		pbar.update(j - first_update)
 		
 		#sys.stderr.write('Total:%.1f%%|File:%s|%s|%s|%s|\r' % (total_progress, file_progress,
