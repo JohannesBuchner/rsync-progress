@@ -87,7 +87,7 @@ for line in read_stdin():
 		#sys.stderr.write('Total:%.1f%%|File:%s|%s|%s|%s|\r' % (total_progress, file_progress,
 		#	short_file_name, file_eta, file_speed))
 		#sys.stderr.flush()
-	elif not line.startswith(' '):
+	elif not line.startswith(' ') and line.strip() != '':
 		# total progress
 		file_name = line
 		if len(parts) == 6:
