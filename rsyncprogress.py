@@ -21,11 +21,11 @@ It will show something like this::
 	       ^ files to be checked
 	^ Overall progress
 
-You need the progressbar package installed (see PyPI).
+You need the progressbar-latest package installed (see PyPI).
 
 License
 -----------
-Copyright (c) 2015 Johannes Buchner
+Copyright (c) 2015-2022 Johannes Buchner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -61,15 +61,16 @@ def read_stdin():
 first_update = None
 widgets = [progressbar.Percentage(), None, progressbar.Bar(), progressbar.ETA(), None]
 pbar = None
+short_file_name = '???'
 
 for line in read_stdin():
 	parts = line.split()
-	if len(parts) == 6 and parts[1].endswith('%') and parts[-1].startswith('to-check='):
+	if len(parts) == 6 and parts[1].endswith('%') and (parts[-1].startswith('to-check=') or parts[-1].startswith('ir-chk=')):
 		# file progress -P
 		file_progress = parts[1]
 		file_speed = parts[2]
 		file_eta = parts[3]
-		istr, ntotalstr = parts[-1][len('to-check='):-1].split('/')
+		istr, ntotalstr = parts[-1].split('=')[1].rstrip(')').split('/')
 		ntotal = int(ntotalstr)
 		i = int(istr)
 		j = ntotal - i
@@ -90,9 +91,10 @@ for line in read_stdin():
 		# total progress
 		file_name = line
 		if len(parts) == 6:
-			print(parts[1].endswith('%'), parts[-1].startswith('to-check='), end=' ')
+			print(parts[1].endswith('%'), parts[-1].startswith('to-check='),end='')
 		if len(file_name) > 40:
 			short_file_name = file_name[:12] + '...' + file_name[-(28-3):]
 		else:
 			short_file_name = file_name
-pbar.finish()
+if pbar is not None:
+	pbar.finish()
