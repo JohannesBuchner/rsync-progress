@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import progressbar
 import sys
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 def read_stdin():
 	line = ''

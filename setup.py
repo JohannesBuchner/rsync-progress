@@ -40,5 +40,5 @@ setup(
     scripts=['rsync-progress.py'],
     setup_requires=setup_requirements,
     url='https://github.com/JohannesBuchner/rsync-progress.py',
-    version='1.0.0',
+    version='1.0.1',
 )
