@@ -65,7 +65,7 @@ short_file_name = '???'
 
 for line in read_stdin():
 	parts = line.split()
-	if len(parts) == 6 and parts[1].endswith('%') and (parts[-1].startswith('to-check=') or parts[-1].startswith('ir-chk=')):
+	if len(parts) == 6 and parts[1].endswith('%') and (parts[-1].startswith('to-check=') or parts[-1].startswith('to-chk=') or parts[-1].startswith('ir-chk=')):
 		# file progress -P
 		file_progress = parts[1]
 		file_speed = parts[2]
