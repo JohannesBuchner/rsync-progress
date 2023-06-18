@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Progress bar for rsync
 ========================

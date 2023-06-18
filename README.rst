@@ -7,7 +7,7 @@ Usage
 ---------
 Run rsync with -P and pipe into this program. Example::
 
-	rsync -P -avz user@host:/onefolder otherfolder/ | python rsyncprogress.py
+	rsync -P -avz user@host:/onefolder otherfolder/ | rsync-progress.py
 
 It will show something like this::
 
@@ -21,6 +21,14 @@ It will show something like this::
 	^ Overall progress
 
 You need the progressbar-latest package installed (see PyPI).
+
+Installation
+------------
+
+::
+
+	$ pip install rsync-progress
+
 
 Contributing
 ------------
